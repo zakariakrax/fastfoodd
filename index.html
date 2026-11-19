@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مطعمنا | Makla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== HEADER / NAV ===== -->
+<header class="header">
+  <div class="container nav">
+    <a href="#home" class="logo">🍽️ مطعمنا</a>
+    <nav class="nav-links">
+      <a href="#menu">المنيو</a>
+      <a href="#recipes">الوصفات</a>
+      <a href="#ai">توصيات AI</a>
+      <a href="#cart" onclick="toggleCart()">🛒 السلة <span id="cart-count" class="badge">0</span></a>
+    </nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <h1>ألذ الماكلة فالمدينة 🌟</h1>
+    <p>منيو متنوع · وصفات حصرية · توصيات بالذكاء الاصطناعي</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-primary">شوف المنيو</a>
+      <a href="#ai" class="btn btn-outline">توصيات AI</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU ===== -->
+<section id="menu" class="section">
+  <div class="container">
+    <h2 class="section-title">📋 المنيو</h2>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterMenu('all')">الكل</button>
+      <button class="filter-btn" onclick="filterMenu('main')">أطباق رئيسية</button>
+      <button class="filter-btn" onclick="filterMenu('starters')">مقبلات</button>
+      <button class="filter-btn" onclick="filterMenu('desserts')">حلويات</button>
+      <button class="filter-btn" onclick="filterMenu('drinks')">مشروبات</button>
+    </div>
+    <div id="menu-grid" class="menu-grid"></div>
+  </div>
+</section>
+
+<!-- ===== RECIPES ===== -->
+<section id="recipes" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">👨‍🍳 الوصفات</h2>
+    <div class="search-bar">
+      <input type="text" id="recipe-search" placeholder="🔍 قلب على وصفة..." oninput="searchRecipes()">
+    </div>
+    <div id="recipes-grid" class="recipes-grid"></div>
+  </div>
+</section>
+
+<!-- ===== AI RECOMMENDATIONS ===== -->
+<section id="ai" class="section">
+  <div class="container">
+    <h2 class="section-title">🤖 توصيات الذكاء الاصطناعي</h2>
+    <p class="section-sub">قولنا شنو بغيتي وما بغيتيش، وغادي نوصيو ليك بأحسن أطباق 💡</p>
+    <div class="ai-box">
+      <div class="ai-inputs">
+        <textarea id="ai-pref" placeholder="مثال: بغيت شي حاجة حارة، ما نحبش البصل، بغيت شي حاجة صحية..."></textarea>
+        <button class="btn btn-primary" onclick="getAIRecommendation()">🎯 جب التوصيات</button>
+      </div>
+      <div id="ai-result" class="ai-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CART DRAWER ===== -->
+<div id="cart" class="cart-drawer">
+  <div class="cart-header">
+    <h3>🛒 السلة ديالك</h3>
+    <button onclick="toggleCart()" class="cart-close">✕</button>
+  </div>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total">المجموع: <span id="cart-total">0 درهم</span></div>
+    <button class="btn btn-primary btn-block" onclick="checkout()">📦 أكد الطلب</button>
+  </div>
+</div>
+<div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <p>🍽️ مطعمنا — صُنع بـ ❤️ على Cloudflare</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
